@@ -41,26 +41,26 @@ const COMPANY = {
 };
 
 const BRANDS = [
-  { name: "Miele", domain: "miele.com" },
+  { name: "Miele", domain: "miele.com", image: "/logos/miele.svg" },
   { name: "Thermador", domain: "thermador.com" },
   { name: "Gaggenau", domain: "gaggenau.com" },
-  { name: "Electrolux", domain: "electrolux.com" },
-  { name: "Frigidaire", domain: "frigidaire.com" },
-  { name: "Samsung", domain: "samsung.com" },
-  { name: "LG", domain: "lg.com" },
-  { name: "Whirlpool", domain: "whirlpoolcorp.com" },
-  { name: "Sub-Zero", domain: "subzero-wolf.com" },
+  { name: "Electrolux", domain: "electrolux.com", image: "/logos/electrolux.svg" },
+  { name: "Frigidaire", domain: "frigidaire.com", image: "/logos/frigidaire.svg" },
+  { name: "Samsung", domain: "samsung.com", image: "/logos/samsung.svg" },
+  { name: "LG", domain: "lg.com", image: "/logos/lg.svg" },
+  { name: "Whirlpool", domain: "whirlpoolcorp.com", image: "/logos/whirlpool.svg" },
+  { name: "Sub-Zero", domain: "subzero-wolf.com", image: "/logos/sub-zero.svg" },
   { name: "Liebherr", domain: "liebherr.com" },
-  { name: "Viking", domain: "vikingrange.com" },
+  { name: "Viking", domain: "vikingrange.com", image: "/logos/viking.svg" },
   { name: "ZLINE", domain: "zlinekitchen.com" },
   { name: "Thor", domain: "thorkitchen.com" },
-  { name: "Fisher & Paykel", domain: "fisherpaykel.com" },
+  { name: "Fisher & Paykel", domain: "fisherpaykel.com", image: "/logos/fisherpaykel.svg" },
   { name: "Bertazzoni", domain: "bertazzoni.com" },
   { name: "Dacor", domain: "dacor.com" },
   { name: "Summit", domain: "summitappliance.com" },
-  { name: "Panasonic", domain: "panasonic.com" },
+  { name: "Panasonic", domain: "panasonic.com", image: "/logos/panasonic.svg" },
   { name: "ILVE", domain: "ilveusa.com" },
-  { name: "Sharp", domain: "sharpusa.com" }
+  { name: "Sharp", domain: "sharpusa.com", image: "/logos/sharp.svg" }
 ];
 
 const PARTNERS = [
@@ -517,7 +517,7 @@ const App = () => {
             {MARQUEE_BRANDS.map((brand, idx) => (
               <div key={idx} className="flex items-center justify-center px-10 border-r border-gray-100 last:border-r-0 h-20">
                 <img
-                  src={`https://logo.clearbit.com/${brand.domain}?size=200`}
+                  src={brand.image || `https://logo.clearbit.com/${brand.domain}?size=200`}
                   alt={brand.name}
                   className="h-10 md:h-12 object-contain filter grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
                   onLoad={(e) => {
