@@ -48,7 +48,7 @@ const BRANDS = [
   { name: "Frigidaire", domain: "frigidaire.com" },
   { name: "Samsung", domain: "samsung.com" },
   { name: "LG", domain: "lg.com" },
-  { name: "Whirlpool", domain: "whirlpool.com" },
+  { name: "Whirlpool", domain: "whirlpoolcorp.com" },
   { name: "Sub-Zero", domain: "subzero-wolf.com" },
   { name: "Liebherr", domain: "liebherr.com" },
   { name: "Viking", domain: "vikingrange.com" },
@@ -520,12 +520,15 @@ const App = () => {
                   src={`https://logo.clearbit.com/${brand.domain}?size=200`}
                   alt={brand.name}
                   className="h-10 md:h-12 object-contain filter grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  onLoad={(e) => {
+                    e.target.nextSibling.style.display = 'none';
+                  }}
                   onError={(e) => {
                     e.target.style.display = 'none';
                     e.target.nextSibling.style.display = 'block';
                   }}
                 />
-                <span className="hidden text-xl md:text-3xl font-bold text-gray-300 hover:text-[#C5A059] transition-colors cursor-default whitespace-nowrap">
+                <span className="text-xl md:text-3xl font-bold text-gray-300 hover:text-[#C5A059] transition-colors cursor-default whitespace-nowrap">
                   {brand.name}
                 </span>
               </div>
