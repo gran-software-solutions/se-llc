@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100">
-  <path d="M10 10 H60 L10 70 H60" fill="none" stroke="black" stroke- stroke-linecap="round" stroke-linejoin="round"/>
-  <g fill="black">
-    <path d="M80 15 v45 h25" fill="none" stroke="black" stroke- stroke-linecap="square"/>
-    <path d="M120 15 v45" fill="none" stroke="black" stroke- stroke-linecap="square"/>
-    <path d="M140 60 V15 l30 45 V15" fill="none" stroke="black" stroke- stroke-linecap="square" stroke-linejoin="miter"/>
-    <path d="M185 15 v45 h25 M185 37.5 h20 M185 15 h25" fill="none" stroke="black" stroke- stroke-linecap="square"/>
-  </g>
-</svg>
