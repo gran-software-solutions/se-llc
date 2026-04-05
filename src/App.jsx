@@ -41,9 +41,26 @@ const COMPANY = {
 };
 
 const BRANDS = [
-  "Miele", "Thermador", "Gaggenau", "Electrolux", "Frigidaire", "Samsung", "LG",
-  "Whirlpool", "Sub-Zero", "Liebherr", "Viking", "ZLINE", "Thor", "Fisher & Paykel",
-  "Bertazzoni", "Dacor", "Summit", "Panasonic", "ILVE", "Sharp"
+  { name: "Miele", domain: "miele.com" },
+  { name: "Thermador", domain: "thermador.com" },
+  { name: "Gaggenau", domain: "gaggenau.com" },
+  { name: "Electrolux", domain: "electrolux.com" },
+  { name: "Frigidaire", domain: "frigidaire.com" },
+  { name: "Samsung", domain: "samsung.com" },
+  { name: "LG", domain: "lg.com" },
+  { name: "Whirlpool", domain: "whirlpool.com" },
+  { name: "Sub-Zero", domain: "subzero-wolf.com" },
+  { name: "Liebherr", domain: "liebherr.com" },
+  { name: "Viking", domain: "vikingrange.com" },
+  { name: "ZLINE", domain: "zlinekitchen.com" },
+  { name: "Thor", domain: "thorkitchen.com" },
+  { name: "Fisher & Paykel", domain: "fisherpaykel.com" },
+  { name: "Bertazzoni", domain: "bertazzoni.com" },
+  { name: "Dacor", domain: "dacor.com" },
+  { name: "Summit", domain: "summitappliance.com" },
+  { name: "Panasonic", domain: "panasonic.com" },
+  { name: "ILVE", domain: "ilveusa.com" },
+  { name: "Sharp", domain: "sharpusa.com" }
 ];
 
 const PARTNERS = [
@@ -498,9 +515,18 @@ const App = () => {
 
           <div className="flex w-max animate-marquee items-center">
             {MARQUEE_BRANDS.map((brand, idx) => (
-              <div key={idx} className="flex items-center justify-center px-10 border-r border-gray-100 last:border-r-0">
-                <span className="text-xl md:text-3xl font-bold text-gray-300 hover:text-[#C5A059] transition-colors cursor-default whitespace-nowrap">
-                  {brand}
+              <div key={idx} className="flex items-center justify-center px-10 border-r border-gray-100 last:border-r-0 h-20">
+                <img
+                  src={`https://logo.clearbit.com/${brand.domain}?size=200`}
+                  alt={brand.name}
+                  className="h-10 md:h-12 object-contain filter grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextSibling.style.display = 'block';
+                  }}
+                />
+                <span className="hidden text-xl md:text-3xl font-bold text-gray-300 hover:text-[#C5A059] transition-colors cursor-default whitespace-nowrap">
+                  {brand.name}
                 </span>
               </div>
             ))}
