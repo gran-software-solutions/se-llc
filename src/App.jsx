@@ -42,8 +42,8 @@ const COMPANY = {
 
 const BRANDS = [
   { name: "Miele", domain: "miele.com", image: "/logos/miele.svg" },
-  { name: "Thermador", domain: "thermador.com" },
-  { name: "Gaggenau", domain: "gaggenau.com" },
+  { name: "Thermador", domain: "thermador.com", image: "/logos/thermador.svg" },
+  { name: "Gaggenau", domain: "gaggenau.com", image: "/logos/gaggenau.svg" },
   { name: "Electrolux", domain: "electrolux.com", image: "/logos/electrolux.svg" },
   { name: "Frigidaire", domain: "frigidaire.com", image: "/logos/frigidaire.svg" },
   { name: "Samsung", domain: "samsung.com", image: "/logos/samsung.svg" },
@@ -53,10 +53,10 @@ const BRANDS = [
   { name: "Liebherr", domain: "liebherr.com" },
   { name: "Viking", domain: "vikingrange.com", image: "/logos/viking.svg" },
   { name: "ZLINE", domain: "zlinekitchen.com" },
-  { name: "Thor", domain: "thorkitchen.com" },
+  { name: "Thor", domain: "thorkitchen.com", image: "/logos/thor.svg" },
   { name: "Fisher & Paykel", domain: "fisherpaykel.com", image: "/logos/fisherpaykel.svg" },
   { name: "Bertazzoni", domain: "bertazzoni.com" },
-  { name: "Dacor", domain: "dacor.com" },
+  { name: "Dacor", domain: "dacor.com", image: "/logos/dacor.svg" },
   { name: "Summit", domain: "summitappliance.com" },
   { name: "Panasonic", domain: "panasonic.com", image: "/logos/panasonic.svg" },
   { name: "ILVE", domain: "ilveusa.com" },
