@@ -51,20 +51,24 @@ const BRANDS = [
   { name: "Whirlpool", domain: "whirlpoolcorp.com", image: "/logos/whirlpool.svg" },
   { name: "Sub-Zero", domain: "subzero-wolf.com", image: "/logos/sub-zero.svg" },
   { name: "Liebherr", domain: "liebherr.com", image: "/logos/liebherr.svg" },
-  { name: "Viking", domain: "vikingrange.com", image: "/logos/viking.svg" },
-  { name: "ZLINE", domain: "zlinekitchen.com", image: "/logos/zline.svg" },
-  { name: "Thor", domain: "thorkitchen.com", image: "/logos/thor.svg" },
-  { name: "Fisher & Paykel", domain: "fisherpaykel.com", image: "/logos/fisherpaykel.svg" },
-  { name: "Bertazzoni", domain: "bertazzoni.com", image: "/logos/bertazzoni.svg" },
-  { name: "Dacor", domain: "dacor.com", image: "/logos/dacor.svg" },
-  { name: "Summit", domain: "summitappliance.com", image: "/logos/summit.svg" },
+  { name: "Viking", domain: "vikingrange.com", image: "/logos/viking.jpeg" },
+  { name: "ZLINE", domain: "zlinekitchen.com", image: "/logos/zline.jpeg" },
+  { name: "Thor", domain: "thorkitchen.com", image: "/logos/thor.png" },
+  { name: "Fisher & Paykel", domain: "fisherpaykel.com", image: "/logos/fisherpaykel.png" },
+  { name: "Bertazzoni", domain: "bertazzoni.com", image: "/logos/bertazzoni.png" },
+  { name: "Dacor", domain: "dacor.com", image: "/logos/dacor.png" },
+  { name: "Summit", domain: "summitappliance.com", image: "/logos/summit.png" },
   { name: "Panasonic", domain: "panasonic.com", image: "/logos/panasonic.svg" },
-  { name: "ILVE", domain: "ilveusa.com", image: "/logos/ilve.svg" },
+  { name: "ILVE", domain: "ilveusa.com", image: "/logos/ilve.png" },
   { name: "Sharp", domain: "sharpusa.com", image: "/logos/sharp.svg" }
 ];
 
 const PARTNERS = [
-  "New Leaf", "AIG", "EFG Home Services", "Guardsman", "Assurant", "American Service Plan"
+  { name: "New Leaf", image: "/logos/newleaf.png" },
+  { name: "AIG", image: "/logos/aig.svg" },
+  { name: "EFG Home Services", image: "/logos/efg.svg" },
+  { name: "Guardsman", image: "/logos/guardsman.png" },
+  { name: "Assurant", image: "/logos/assurant.svg" }
 ];
 
 const SERVICES = [
@@ -210,13 +214,19 @@ const App = () => {
           <a href="#" className="flex items-center gap-4 group">
             {/* Logo Logic: Tries to load original, falls back to custom UI component if path fails */}
             {!logoError ? (
-              <div className="bg-white p-2 rounded-lg shadow-sm">
-                <img
-                  src="https://solutionselectronics.com/wp-content/uploads/2025/09/cropped-solutions-electronics-header-logo.png"
-                  alt="Solutions Electronics"
-                  className="h-8 md:h-10 object-contain transition-all"
-                  onError={() => setLogoError(true)}
-                />
+              <div className="flex items-center gap-4">
+                <div className="bg-white p-2 rounded-lg shadow-sm">
+                  <img
+                    src="https://solutionselectronics.com/wp-content/uploads/2025/09/cropped-solutions-electronics-header-logo.png"
+                    alt="Solutions Electronics"
+                    className="h-8 md:h-10 object-contain transition-all"
+                    onError={() => setLogoError(true)}
+                  />
+                </div>
+                <div className={scrolled ? 'text-[#111]' : 'text-white'}>
+                  <h1 className="text-xl font-black tracking-tighter leading-none italic uppercase">Solutions</h1>
+                  <p className="text-[10px] tracking-[0.25em] font-medium uppercase opacity-80 mt-0.5">Electronics LLC</p>
+                </div>
               </div>
             ) : (
               <div className="flex items-center gap-4">
@@ -513,17 +523,23 @@ const App = () => {
           <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
           <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
 
-          <div className="flex w-max animate-marquee items-center">
+          <div className="flex w-max animate-marquee items-center gap-0">
             {MARQUEE_BRANDS.map((brand, idx) => (
-              <div key={idx} className="flex items-center justify-center px-10 border-r border-gray-100 last:border-r-0 h-20">
-                <img
-                  src={`${import.meta.env.BASE_URL}${brand.image.replace(/^\//, '')}`}
-                  alt={brand.name}
-                  className="h-10 w-auto max-w-[140px] object-contain transition-all duration-300"
-                />
+              <div key={idx} className="flex items-center justify-center px-10 md:px-16 border-r border-gray-50 last:border-r-0 h-32 md:h-40">
+                <div className="w-28 md:w-40 h-16 md:h-20 flex items-center justify-center">
+                  <img
+                    src={`${import.meta.env.BASE_URL}${brand.image.replace(/^\//, '')}`}
+                    alt={brand.name}
+                    className={`max-h-full max-w-full w-auto h-auto object-contain opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 mix-blend-multiply ${
+                      ['Viking', 'ZLINE', 'ILVE'].includes(brand.name) ? 'scale-125' :
+                      ['LG'].includes(brand.name) ? 'scale-110' : ''
+                    } ${brand.name === 'ILVE' ? 'brightness-0' : ''}`}
+                  />
+                </div>
               </div>
             ))}
           </div>
+
         </div>
       </section>
 
@@ -593,16 +609,29 @@ const App = () => {
           </div>
 
           {/* Third-Party Warranty Partners */}
-          <div className="max-w-5xl mx-auto text-center border-t border-gray-200 pt-16">
+          <div className="max-w-6xl mx-auto text-center border-t border-gray-200 pt-16">
             <h4 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-8">Trusted Third-Party Warranty Partners</h4>
-            <div className="flex flex-wrap justify-center gap-x-12 gap-y-6">
+            <div className="flex flex-wrap md:flex-nowrap justify-center items-center gap-x-4 md:gap-x-12 gap-y-10">
               {PARTNERS.map((partner, idx) => (
-                <span key={idx} className="text-lg md:text-xl font-black text-gray-300 italic uppercase">
-                  {partner}
-                </span>
+                <div key={idx} className="w-32 md:w-48 h-16 md:h-24 flex items-center justify-center px-2">
+                  {partner.image ? (
+                    <img 
+                      src={`${import.meta.env.BASE_URL}${partner.image.replace(/^\//, '')}`}
+                      alt={partner.name}
+                      className={`max-h-full max-w-full w-auto h-auto object-contain opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 mix-blend-multiply ${
+                        ['Guardsman', 'New Leaf'].includes(partner.name) ? 'drop-shadow-[0_0_1px_rgba(0,0,0,0.8)]' : ''
+                      }`}
+                    />
+                  ) : (
+                    <span className="text-lg md:text-xl font-black text-gray-300 italic uppercase">
+                      {partner.name}
+                    </span>
+                  )}
+                </div>
               ))}
             </div>
           </div>
+
         </div>
       </section>
 
@@ -725,13 +754,19 @@ const App = () => {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-10 mb-16">
             <div className="flex items-center gap-5">
               {!logoError ? (
-                <div className="bg-white p-2 rounded-lg">
-                  <img
-                    src="https://solutionselectronics.com/wp-content/uploads/2025/09/cropped-solutions-electronics-header-logo.png"
-                    alt="Solutions Electronics"
-                    className="h-8 md:h-10 object-contain"
-                    onError={() => setLogoError(true)}
-                  />
+                <div className="flex items-center gap-5">
+                  <div className="bg-white p-2 rounded-lg">
+                    <img
+                      src="https://solutionselectronics.com/wp-content/uploads/2025/09/cropped-solutions-electronics-header-logo.png"
+                      alt="Solutions Electronics"
+                      className="h-8 md:h-10 object-contain"
+                      onError={() => setLogoError(true)}
+                    />
+                  </div>
+                  <div>
+                    <h1 className="text-2xl font-black tracking-tighter leading-none italic uppercase text-white">Solutions</h1>
+                    <p className="text-[10px] tracking-[0.3em] font-medium text-[#C5A059] uppercase mt-1">Electronics LLC</p>
+                  </div>
                 </div>
               ) : (
                 <>
