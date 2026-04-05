@@ -50,16 +50,16 @@ const BRANDS = [
   { name: "LG", domain: "lg.com", image: "/logos/lg.svg" },
   { name: "Whirlpool", domain: "whirlpoolcorp.com", image: "/logos/whirlpool.svg" },
   { name: "Sub-Zero", domain: "subzero-wolf.com", image: "/logos/sub-zero.svg" },
-  { name: "Liebherr", domain: "liebherr.com" },
+  { name: "Liebherr", domain: "liebherr.com", image: "/logos/liebherr.svg" },
   { name: "Viking", domain: "vikingrange.com", image: "/logos/viking.svg" },
-  { name: "ZLINE", domain: "zlinekitchen.com" },
+  { name: "ZLINE", domain: "zlinekitchen.com", image: "/logos/zline.svg" },
   { name: "Thor", domain: "thorkitchen.com", image: "/logos/thor.svg" },
   { name: "Fisher & Paykel", domain: "fisherpaykel.com", image: "/logos/fisherpaykel.svg" },
-  { name: "Bertazzoni", domain: "bertazzoni.com" },
+  { name: "Bertazzoni", domain: "bertazzoni.com", image: "/logos/bertazzoni.svg" },
   { name: "Dacor", domain: "dacor.com", image: "/logos/dacor.svg" },
-  { name: "Summit", domain: "summitappliance.com" },
+  { name: "Summit", domain: "summitappliance.com", image: "/logos/summit.svg" },
   { name: "Panasonic", domain: "panasonic.com", image: "/logos/panasonic.svg" },
-  { name: "ILVE", domain: "ilveusa.com" },
+  { name: "ILVE", domain: "ilveusa.com", image: "/logos/ilve.svg" },
   { name: "Sharp", domain: "sharpusa.com", image: "/logos/sharp.svg" }
 ];
 
@@ -517,20 +517,10 @@ const App = () => {
             {MARQUEE_BRANDS.map((brand, idx) => (
               <div key={idx} className="flex items-center justify-center px-10 border-r border-gray-100 last:border-r-0 h-20">
                 <img
-                  src={brand.image ? `${import.meta.env.BASE_URL}${brand.image.replace(/^\//, '')}` : `https://logo.clearbit.com/${brand.domain}?size=200`}
+                  src={`${import.meta.env.BASE_URL}${brand.image.replace(/^\//, '')}`}
                   alt={brand.name}
                   className="h-10 md:h-12 object-contain filter grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-                  onLoad={(e) => {
-                    e.target.nextSibling.style.display = 'none';
-                  }}
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.nextSibling.style.display = 'block';
-                  }}
                 />
-                <span className="text-xl md:text-3xl font-bold text-gray-300 hover:text-[#C5A059] transition-colors cursor-default whitespace-nowrap">
-                  {brand.name}
-                </span>
               </div>
             ))}
           </div>
