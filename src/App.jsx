@@ -519,7 +519,7 @@ const App = () => {
                 <img
                   src={`${import.meta.env.BASE_URL}${brand.image.replace(/^\//, '')}`}
                   alt={brand.name}
-                  className="h-8 w-auto max-w-[120px] object-contain transition-all duration-300"
+                  className="h-10 w-auto max-w-[140px] object-contain transition-all duration-300"
                 />
               </div>
             ))}
