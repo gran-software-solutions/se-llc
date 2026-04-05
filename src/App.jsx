@@ -517,7 +517,7 @@ const App = () => {
             {MARQUEE_BRANDS.map((brand, idx) => (
               <div key={idx} className="flex items-center justify-center px-10 border-r border-gray-100 last:border-r-0 h-20">
                 <img
-                  src={brand.image || `https://logo.clearbit.com/${brand.domain}?size=200`}
+                  src={brand.image ? `${import.meta.env.BASE_URL}${brand.image.replace(/^\//, '')}` : `https://logo.clearbit.com/${brand.domain}?size=200`}
                   alt={brand.name}
                   className="h-10 md:h-12 object-contain filter grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
                   onLoad={(e) => {
